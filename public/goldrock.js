@@ -104,35 +104,13 @@ function validateEmail() {
 
 // add lodging to profile
 function registerLodging(event) {
-   if (event === undefined) { // get caller element in IE8
-      event = window.event;
-   }
-   var callerElement = event.target || event.srcElement;
-   var lodgingName = callerElement.value;
-   if (callerElement.checked) { // if box has just been checked
-      // add checkbox value to lodging array
-      lodging.push(lodgingName);
-      // add checkbox value to list in profile section
-      var newLodging = document.createElement("li");
-      newLodging.innerHTML = lodgingName;
-      document.getElementById("profileLodgings").appendChild(newLodging);
-      // make profile section and lodging section visible
-      document.getElementById("profile").style.display = "block";
-      document.getElementById("lodgingsSection").style.display = "block";
-   } else { // if box has just been unchecked
-      var listItems = document.querySelectorAll("#profileLodgings li");
-      for (var i = 0; i < listItems.length; i++) {
-         if (listItems[i].innerHTML === lodgingName) {
-            // remove element at index i from array
-            lodging.splice(i, 1); 
-            // remove lodging from profile list
-            listItems[i].parentNode.removeChild(listItems[i]);
-            break;
-         }
-      }
-   }
+  
 }
 
+// convert form input to strings for submission
+function convertToString() {
+ 
+}
 
 function createEventListeners() {
    var unInput = document.getElementById("uname");
@@ -157,6 +135,13 @@ function createEventListeners() {
       for (var i = 0; i < lodgings.length; i++) {
          lodgings[i].attachEvent("onchange", registerLodging);
       }
+   }
+  
+     var button = document.getElementById("createBtn");
+   if (button.addEventListener) {
+      button.addEventListener("click", convertToString, false);
+   } else if (button.attachEvent) {
+      button.attachEvent("onclick", convertToString);
    }
 }
 
