@@ -12,8 +12,8 @@
 "use strict";
 
 // global variables
-var profile = {};
-var lodging = [];
+var profile = {};     //declares an object variable
+var lodging = [];     //declares an array
 var objectString;
 var arrayString;
 
@@ -110,8 +110,8 @@ function registerLodging(event) {
    var callerElement = event.target || event.srcElement;
    var lodgingName = callerElement.value;
    if (callerElement.checked) { // if box has just been checked
-// replace with statement to add checkbox value to lodging array
-
+      // add checkbox value to lodging array
+      lodging.push(lodgingName);
       // add checkbox value to list in profile section
       var newLodging = document.createElement("li");
       newLodging.innerHTML = lodgingName;
@@ -123,8 +123,8 @@ function registerLodging(event) {
       var listItems = document.querySelectorAll("#profileLodgings li");
       for (var i = 0; i < listItems.length; i++) {
          if (listItems[i].innerHTML === lodgingName) {
-// replace with statement to remove element at index i from array
-
+            // remove element at index i from array
+            lodging.splice(i, 1); 
             // remove lodging from profile list
             listItems[i].parentNode.removeChild(listItems[i]);
             break;
@@ -132,6 +132,7 @@ function registerLodging(event) {
       }
    }
 }
+
 
 function createEventListeners() {
    var unInput = document.getElementById("uname");
