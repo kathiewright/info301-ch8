@@ -1,7 +1,5 @@
 /*    JavaScript 6th Edition
- *    Chapter 8
- *    Chapter case
-
+ *    Unit 5
  *    Golden Rocks National Park 
  *    Author: 
  *    Date:   
